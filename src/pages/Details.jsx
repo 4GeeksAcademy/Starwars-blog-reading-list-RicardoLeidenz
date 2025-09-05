@@ -8,7 +8,7 @@ export const Details = () => {
     const [details,setDetails] = useState([])
 
     const getDetails = () => {
-        console.log(store.baseURL + elementType + "/" + elementID)
+        console.log(store.baseURL + elementType + "/" + elementID);
 		fetch(store.baseURL + elementType + "/" + elementID)
 		.then(
 			(allDetails) => {
@@ -17,10 +17,12 @@ export const Details = () => {
 		)
 		.then(
 			(data) => {
+            console.log("Details:", store.details);
 				dispatch({
                     type: "set-details",
                     payload: data.results
                 });
+            console.log("Details:", store.details);
 			}
 		)
 	}

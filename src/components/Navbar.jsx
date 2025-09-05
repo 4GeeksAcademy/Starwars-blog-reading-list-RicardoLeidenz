@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import { Favorites } from "./Favorites";
 export const Navbar = () => {
 
 	return (
@@ -9,6 +9,7 @@ export const Navbar = () => {
 					<span className="navbar-brand mb-0 h1">STAR WARS DATABANK</span>
 				</Link>
 			</div>
+			<Favorites/>
 		</nav>
 	);
 };
