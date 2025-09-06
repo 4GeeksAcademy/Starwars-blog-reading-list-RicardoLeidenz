@@ -1,5 +1,13 @@
+body{
+    background-color: black;
+}
 .scrollContainer{
     margin:auto;
     width: 90%;
     overflow-x: scroll;
+}
+img{
+    border-width: thick;
+    border-style: solid;
+    border-color: red;
 }

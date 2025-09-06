@@ -17,7 +17,7 @@ export const Card = (props) => {
     }
 
     return(
-        <div className="card h-100 position-relative">
+        <div className="card h-100">
             <div className="card-body">
                 <h5 className="card-title">{props.name}</h5>
                 <p className="card-text">{props.name} is a {props.type} in STAR WARS</p>

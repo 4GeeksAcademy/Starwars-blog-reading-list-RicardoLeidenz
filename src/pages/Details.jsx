@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 
 export const Details = () => {
     const {store, dispatch} =useGlobalReducer()
@@ -8,7 +8,6 @@ export const Details = () => {
     const [details,setDetails] = useState([])
 
     const getDetails = () => {
-        console.log(store.baseURL + elementType + "/" + elementID);
 		fetch(store.baseURL + elementType + "/" + elementID)
 		.then(
 			(allDetails) => {
@@ -17,26 +16,62 @@ export const Details = () => {
 		)
 		.then(
 			(data) => {
-            console.log("Details:", store.details);
 				dispatch({
                     type: "set-details",
-                    payload: data.results
+                    payload: data.result
                 });
-            console.log("Details:", store.details);
 			}
 		)
 	}
+    const showDetails = () =>{
+        switch (elementType){
+            case "people":
+                return(
+                    <div>
+
+                    </div>
+                )
+            case "planets":
+                return(
+                    <div>
+
+                    </div>
+                )
+            case "vehicles":
+                return(
+                    <div>
+
+                    </div>
+                )
+            default:
+                return(
+                    <div>
+                        Loading...
+                    </div>
+                )
+        }
+        
+    }
     useEffect(()=>{
         getDetails()
     },[])
+
     return(
-        <div>
-            <h1>DETAILS SITE</h1>
-            {
-                store.details.properties
-                ? store.details.properties.name
-                :"Loading..."
-            }
+        <div className="text-white">
+            <div className="bg-dark text-center py-3 my-5">
+                <h1>{
+                    store.details.properties
+                    ? store.details.properties.name
+                    :"Loading..."
+                }  
+                </h1>
+            </div>
+            <div className="bg-dark text-center py-3">
+                <h1>{
+                    showDetails()
+                }  
+                </h1>
+            </div>
         </div>
     )
 }

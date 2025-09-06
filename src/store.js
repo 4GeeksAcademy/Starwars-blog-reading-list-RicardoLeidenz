@@ -4,7 +4,11 @@ export const initialStore=()=>{
     people: [],
     planets: [],
     vehicles:[],
-    details: {},
+    details: {
+      properties:{
+        name:"name"
+      }
+    },
     favorites: []
   }
 }

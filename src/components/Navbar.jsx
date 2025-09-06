@@ -4,12 +4,14 @@ export const Navbar = () => {
 
 	return (
 		<nav className="navbar navbar-light bg-light">
-			<div className="container">
+			<div className="float-start">
 				<Link to="/">
-					<span className="navbar-brand mb-0 h1">STAR WARS DATABANK</span>
+					<span className="navbar-brand m-5 h1">STAR WARS DATABANK</span>
 				</Link>
 			</div>
-			<Favorites/>
+			<div className="float-end">
+				<Favorites/>
+			</div>
 		</nav>
 	);
 };
