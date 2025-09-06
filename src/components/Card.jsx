@@ -8,7 +8,10 @@ export const Card = (props) => {
         if(!store.favorites.some(name => name == props.name)){
 			dispatch({
                 type:"set-favorite",
-                payload:props.name
+                payload:{
+                    name: props.name,
+                    url: "/details/" + props.type + "/" + props.uid
+                }
             })  
         }
         else{

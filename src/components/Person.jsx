@@ -1,7 +1,7 @@
 export const Person = (props) => (
     <div>
         <div className="row bg-dark justify-content-center">
-            <img className="w-25" src="https://cdn.media.amplience.net/i/hasbropulse/F8683_DIO_STAMOS_FRONT_LIGHT_2000px_300DPI" ></img>
+            <img className="w-25" src="https://cdn.media.amplience.net/i/hasbropulse/F8683_DIO_STAMOS_FRONT_LIGHT_2000px_300DPI"/>
         </div>
         <div className="row bg-dark text-white pb-3">
             <h3>Properties:</h3>

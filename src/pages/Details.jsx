@@ -10,7 +10,7 @@ export const Details = () => {
     const {elementType,elementID} = useParams()
     const [details, setDetails] = useState({})
 
-    const getDetails = () => {
+    const getDetails = (type,) => {
 		fetch(store.baseURL + elementType + "/" + elementID)
 		.then(
 			(allDetails) => {

@@ -1,7 +1,7 @@
 export const Planet = (props) => (
     <div>
         <div className="row bg-dark justify-content-center">
-            <img className="w-25" src="https://scx2.b-cdn.net/gfx/news/hires/2015/whatsimporta.jpg" ></img>
+            <img className="w-25" src="https://scx2.b-cdn.net/gfx/news/hires/2015/whatsimporta.jpg"/>
         </div>
         <div className="row bg-dark text-white pb-3">
             <h3>Properties:</h3>
