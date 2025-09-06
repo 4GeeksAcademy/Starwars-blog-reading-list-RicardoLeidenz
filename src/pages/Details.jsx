@@ -1,11 +1,14 @@
 import { useParams } from "react-router-dom"
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
+import { Person } from "../components/Person.jsx";
+import { Planet } from "../components/Planet.jsx";
+import { Vehicle } from "../components/Vehicle.jsx";
 
 export const Details = () => {
     const {store, dispatch} =useGlobalReducer()
     const {elementType,elementID} = useParams()
-    const [details,setDetails] = useState([])
+    const [details, setDetails] = useState({})
 
     const getDetails = () => {
 		fetch(store.baseURL + elementType + "/" + elementID)
@@ -16,10 +19,7 @@ export const Details = () => {
 		)
 		.then(
 			(data) => {
-				dispatch({
-                    type: "set-details",
-                    payload: data.result
-                });
+				setDetails(data.result)
 			}
 		)
 	}
@@ -27,21 +27,16 @@ export const Details = () => {
         switch (elementType){
             case "people":
                 return(
-                    <div>
-
-                    </div>
+                    <Person person={details.properties} />
                 )
             case "planets":
                 return(
-                    <div>
-
-                    </div>
+                    <Planet planet={details.properties}/>
                 )
             case "vehicles":
                 return(
-                    <div>
-
-                    </div>
+                    
+                    <Vehicle vehicle={details.properties}/>
                 )
             default:
                 return(
@@ -60,17 +55,14 @@ export const Details = () => {
         <div className="text-white">
             <div className="bg-dark text-center py-3 my-5">
                 <h1>{
-                    store.details.properties
-                    ? store.details.properties.name
+                    details.properties
+                    ? details.properties.name
                     :"Loading..."
                 }  
                 </h1>
             </div>
             <div className="bg-dark text-center py-3">
-                <h1>{
-                    showDetails()
-                }  
-                </h1>
+                {showDetails()} 
             </div>
         </div>
     )

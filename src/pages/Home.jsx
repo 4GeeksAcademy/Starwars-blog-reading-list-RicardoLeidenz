@@ -1,5 +1,5 @@
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
-import React, {useEffect, useState} from "react";
+import { useEffect } from "react";
 import { Card } from "../components/Card.jsx";
 import { Jumbotron } from "../components/Jumbotron.jsx";
 

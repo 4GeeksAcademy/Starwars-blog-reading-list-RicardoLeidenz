@@ -9,7 +9,7 @@ export const Navbar = () => {
 					<span className="navbar-brand m-5 h1">STAR WARS DATABANK</span>
 				</Link>
 			</div>
-			<div className="float-end">
+			<div className="float-end me-5">
 				<Favorites/>
 			</div>
 		</nav>
