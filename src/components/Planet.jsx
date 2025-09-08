@@ -1,6 +1,7 @@
 export const Planet = (props) => (
     <div>
         <div className="row bg-dark justify-content-center">
+            {/* Updates image to right one based on element ID passed as a prop */}
             <img className="w-25" src={`https://raw.githubusercontent.com/breatheco-de/swapi-images/refs/heads/master/public/images/planets/${props.uid}.jpg`}/>
         </div>
         <div className="row bg-dark text-white pb-3">

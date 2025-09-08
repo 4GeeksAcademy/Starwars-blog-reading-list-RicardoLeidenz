@@ -5,14 +5,19 @@ import { Jumbotron } from "../components/Jumbotron.jsx";
 
 export const Home = () => {
 
-  const {store, dispatch} =useGlobalReducer();
-  const [nextPeople, setnextPeople] = useState("");
-  const [nextPlanets, setnextPlanets] = useState("");
-  const [nextVehicles, setnextVehicles] = useState("");
-  const [previousPeople, setpreviousPeople] = useState("");
-  const [previousPlanets, setpreviousPlanets] = useState("");
-  const [previousVehicles, setpreviousVehicles] = useState("");
+	const {store, dispatch} =useGlobalReducer();
 
+	//Variables to save the links of the next set of people, planets and vehicles
+	const [nextPeople, setnextPeople] = useState("");
+	const [nextPlanets, setnextPlanets] = useState("");
+	const [nextVehicles, setnextVehicles] = useState("");
+
+	//Variables to save the links of the previous set of people, planets and vehicles
+	const [previousPeople, setpreviousPeople] = useState("");
+	const [previousPlanets, setpreviousPlanets] = useState("");
+	const [previousVehicles, setpreviousVehicles] = useState("");
+
+	//Fetches list of people
 	const getPeople = (url) => {
 		fetch(url)
 		.then(
@@ -31,6 +36,7 @@ export const Home = () => {
 			}
 		)
 	}
+	//Fetches list of planets
 	const getPlanets = (url) => {
 		fetch(url)
 		.then(
@@ -49,6 +55,7 @@ export const Home = () => {
 			}
 		)
 	}
+	//Fetches list of vehicles
 	const getVehicles = (url) => {
 		fetch(url)
 		.then(
@@ -67,6 +74,7 @@ export const Home = () => {
 			}
 		)
 	}
+	//Calls the fetch functions with the links saved for the next set of people, planets and vehicles
 	const showNext = (type) => {
 		switch(type){
 			case "people":
@@ -83,6 +91,7 @@ export const Home = () => {
 				}
 		}
 	}
+	//Calls the fetch functions with the links saved for the previous set of people, planets and vehicles
 	const showPrevious = (type) => {
 		switch(type){
 			case "people":
@@ -93,7 +102,7 @@ export const Home = () => {
 				if(previousVehicles) getVehicles(previousVehicles);
 		}
 	}
-
+	//Calls the fetch functions for the first set of people, planets and vehicles
 	useEffect(()=>{
 		getPeople(store.baseURL + "people");
 		getPlanets(store.baseURL + "planets");
@@ -108,11 +117,13 @@ export const Home = () => {
 				<img className="w-75 py-3" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c492f8a3-156e-401e-a3af-0bd563fb7ddd/decawt5-9a798d48-3cd3-4a23-8672-2b93f69da6c4.jpg/v1/fill/w_1280,h_720,q_75,strp/star_wars_by_revo_collage_decawt5-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIwIiwicGF0aCI6IlwvZlwvYzQ5MmY4YTMtMTU2ZS00MDFlLWEzYWYtMGJkNTYzZmI3ZGRkXC9kZWNhd3Q1LTlhNzk4ZDQ4LTNjZDMtNGEyMy04NjcyLTJiOTNmNjlkYTZjNC5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.QQe0v7eb2uEh-KpH1ypzuoQ63OPPZkWSkWCHe_pfDeU"/>
 				<p>Discover every Star Wars character, from Jedi and Sith to smugglers and droids, with detailed histories, powers, and galactic impact.</p>
 				<div className="d-flex rounded bg-dark py-5 scrollContainer">
+					{/* Previous button (only showned when a previous link exists) */}
 					{
 						previousPeople 
 						? <h1 className="m-auto m-2" onClick={()=>{showPrevious("people")}}>{"<PREV"}</h1>
 						: ""
 					}
+					{/* Maps over the array of people creating cards for each person */}
 					{
 						store.people.length > 0 
 						? store.people.map((person,index)=>{
@@ -124,6 +135,7 @@ export const Home = () => {
 						})
 						: "Loading..."
 					}
+					{/* Next button (only showned when a next link exists) */}
 					{
 						nextPeople
 						? <h1 className="m-auto m-2" onClick={()=>{showNext("people")}}>{"NEXT>"}</h1>
@@ -136,11 +148,13 @@ export const Home = () => {
 				<img className="w-75 py-3" src="https://images.steamusercontent.com/ugc/2351510977210497310/15427147A5B49D7532EA30C3B4A39D704389178D/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false"/>
 				<p>Explore the diverse worlds of Star Wars, uncovering landscapes, cultures, and conflicts that shape the galaxy’s rich interstellar story.</p>
 				<div className="d-flex rounded bg-dark py-5 scrollContainer">
+					{/* Previous button (only showned when a previous link exists) */}
 					{
 						previousPlanets
 						? <h1 className="m-auto m-2" onClick={()=>{showPrevious("planets")}}>{"<PREV"}</h1>
 						: ""
 					}
+					{/* Maps over the array of planets creating cards for each planet */}
 					{
 						store.planets.length > 0 
 						? store.planets.map((planet,index)=>{
@@ -152,6 +166,7 @@ export const Home = () => {
 						})
 						: "Loading..."
 					}
+					{/* Next button (only showned when a next link exists) */}
 					{
 						nextPlanets
 						? <h1 className="m-auto m-2" onClick={()=>{showNext("planets")}}>{"NEXT>"}</h1>
@@ -164,11 +179,13 @@ export const Home = () => {
 				<img className="w-75 py-3" src="https://www.this-is-cool.co.uk/wp-content/uploads/2015/10/starwars-stamps-vehicles.jpeg"/>
 				<p>Browse iconic Star Wars vehicles, from starfighters to capital ships, with insights into design, technology, and legendary battles across space.</p>
 				<div className="d-flex rounded bg-dark py-5 scrollContainer">
+					{/* Previous button (only showned when a previous link exists) */}
 					{
 						previousVehicles 
 						? <h1 className="m-auto m-2" onClick={()=>{showPrevious("vehicles")}}>{"<PREV"}</h1>
 						: ""
 					}
+					{/* Maps over the array of vehicles creating cards for each vehicle */}
 					{
 						store.vehicles.length > 0 
 						? store.vehicles.map((vehicle,index)=>{
@@ -180,6 +197,7 @@ export const Home = () => {
 						})
 						: "Loading..."
 					}
+					{/* Next button (only showned when a next link exists) */}
 					{
 						nextVehicles
 						? <h1 className="m-auto m-2" onClick={()=>{showNext("vehicles")}}>{"NEXT>"}</h1>

@@ -1,11 +1,13 @@
 export const Vehicle = (props) => (
     <div>
         <div className="row bg-dark justify-content-center">
+            {/* Updates image to right one based on element ID passed as a prop */}
             <img className="w-25" src={`https://raw.githubusercontent.com/breatheco-de/swapi-images/refs/heads/master/public/images/vehicles/${props.uid}.jpg`}/>
         </div>
         <div className="row bg-dark text-white pb-3">
             <h3>Properties:</h3>
         </div>
+        {/* Updates information showned based on details fetches and passed as a prop */}
         <div className="row bg-dark text-white border border-light">
             <div className="col-4 border border-top-0 border-light">
                 <p className=""><strong>Name: </strong>{

@@ -7,8 +7,10 @@ import { Vehicle } from "../components/Vehicle.jsx";
 
 export const Details = () => {
     const {store, dispatch} =useGlobalReducer()
+    //Catch the element type and the ID passed as parameters
     const {elementType,elementID} = useParams()
 
+    //Used to fetch details to show on page depending on element type and ID
     const getDetails = () => {
 		fetch(store.baseURL + elementType + "/" + elementID)
 		.then(
@@ -25,6 +27,7 @@ export const Details = () => {
 			}
 		)
 	}
+    //Creates a Person, Planet or Vehicle component depending on the parmeter passed
     const showDetails = () =>{
         switch (elementType){
             case "people":
@@ -49,6 +52,7 @@ export const Details = () => {
         }
         
     }
+    //Calls get details when firs loaded to fetch the necesary information to fill the page
     useEffect(()=>{
         if (store.details.uid != elementID){
             getDetails();
