@@ -53,7 +53,7 @@ export const Details = () => {
         if (store.details.uid != elementID){
             getDetails();
         }
-    },[]);
+    });
 
     return(
         <div className="text-white">

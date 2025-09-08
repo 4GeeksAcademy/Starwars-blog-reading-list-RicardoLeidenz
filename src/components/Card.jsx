@@ -18,6 +18,12 @@ export const Card = (props) => {
             console.log("Item Already Favorited")
         }
     }
+    const resetDetails = () => {
+        dispatch({
+            type: "set-details",
+            payload: {}
+        });
+    }
 
     return(
         <div className="card h-100">
@@ -27,7 +33,7 @@ export const Card = (props) => {
                 <p className="card-text">{props.name} is a {props.type} in STAR WARS</p>
                 <div className="d-flex">
                     <Link to={"/details/" + props.type + "/" + props.uid}>
-                        <button className="btn btn-primary mx-3">Go to details</button>
+                        <button className="btn btn-primary mx-3" onClick={resetDetails}>Go to details</button>
                     </Link>
                     <button 
                         className={store.favorites.some(item => item.name == props.name)?"btn mx-3 btn-warning":"btn mx-3 btn-secondary"}
