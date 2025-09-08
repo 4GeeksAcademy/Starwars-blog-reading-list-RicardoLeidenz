@@ -8,7 +8,6 @@ import { Vehicle } from "../components/Vehicle.jsx";
 export const Details = () => {
     const {store, dispatch} =useGlobalReducer()
     const {elementType,elementID} = useParams()
-    const [details, setDetails] = useState({})
 
     const getDetails = () => {
 		fetch(store.baseURL + elementType + "/" + elementID)
@@ -19,7 +18,10 @@ export const Details = () => {
 		)
 		.then(
 			(data) => {
-				setDetails(data.result)
+				dispatch({
+                    type: "set-details",
+                    payload: data.result
+                });
 			}
 		)
 	}
@@ -27,16 +29,16 @@ export const Details = () => {
         switch (elementType){
             case "people":
                 return(
-                    <Person person={details.properties} />
+                    <Person person={store.details.properties} uid={elementID} />
                 )
             case "planets":
                 return(
-                    <Planet planet={details.properties}/>
+                    <Planet planet={store.details.properties} uid={elementID}/>
                 )
             case "vehicles":
                 return(
                     
-                    <Vehicle vehicle={details.properties}/>
+                    <Vehicle vehicle={store.details.properties} uid={elementID}/>
                 )
             default:
                 return(
@@ -48,15 +50,17 @@ export const Details = () => {
         
     }
     useEffect(()=>{
-        getDetails()
-    },[])
+        if (store.details.uid != elementID){
+            getDetails();
+        }
+    },[]);
 
     return(
         <div className="text-white">
             <div className="bg-dark text-center py-3 my-5">
                 <h1>{
-                    details.properties
-                    ? details.properties.name
+                    store.details.properties
+                    ? store.details.properties.name
                     :"Loading..."
                 }  
                 </h1>

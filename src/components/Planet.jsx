@@ -1,7 +1,7 @@
 export const Planet = (props) => (
     <div>
         <div className="row bg-dark justify-content-center">
-            <img className="w-25" src="https://scx2.b-cdn.net/gfx/news/hires/2015/whatsimporta.jpg"/>
+            <img className="w-25" src={`https://raw.githubusercontent.com/breatheco-de/swapi-images/refs/heads/master/public/images/planets/${props.uid}.jpg`}/>
         </div>
         <div className="row bg-dark text-white pb-3">
             <h3>Properties:</h3>
@@ -33,7 +33,7 @@ export const Planet = (props) => (
             <div className="col-4 border border-top-0 border-light">
                 <p className=""><strong>Orbital Period: </strong>{
                     props.planet
-                    ? props.planet.name
+                    ? props.planet.orbital_period
                     :"Loading..."
                 }</p>
             </div>
