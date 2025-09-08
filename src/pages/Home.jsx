@@ -75,11 +75,11 @@ export const Home = () => {
 				}
 			case "planets":
 				if (nextPlanets){
-					getPeople(nextPlanets);
+					getPlanets(nextPlanets);
 				}
 			case "vehicles":
 				if (nextVehicles){
-					getPeople(nextVehicles);
+					getVehicles(nextVehicles);
 				}
 		}
 	}
@@ -110,7 +110,7 @@ export const Home = () => {
 				<div className="d-flex rounded bg-dark py-5 scrollContainer">
 					{
 						previousPeople 
-						? <button className="m-auto m-2" onClick={()=>{showPrevious("people")}}>{"<PREV"}</button>
+						? <h1 className="m-auto m-2" onClick={()=>{showPrevious("people")}}>{"<PREV"}</h1>
 						: ""
 					}
 					{
@@ -166,7 +166,7 @@ export const Home = () => {
 				<div className="d-flex rounded bg-dark py-5 scrollContainer">
 					{
 						previousVehicles 
-						? <button className="m-auto m-2" onClick={()=>{showPrevious("vehicles")}}>{"<PREV"}</button>
+						? <h1 className="m-auto m-2" onClick={()=>{showPrevious("vehicles")}}>{"<PREV"}</h1>
 						: ""
 					}
 					{
