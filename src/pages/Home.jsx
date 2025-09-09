@@ -197,7 +197,7 @@ export const Home = () => {
 						})
 						: "Loading..."
 					}
-					{/* Next button (only showned when a next link exists) */}
+					{/* Next button (only showned when a next link exists */}
 					{
 						nextVehicles
 						? <h1 className="m-auto m-2" onClick={()=>{showNext("vehicles")}}>{"NEXT>"}</h1>

@@ -6,7 +6,7 @@ export const Card = (props) => {
 
     const setFavorite = () =>{
         //Sets current card as a favorite adding it to the favorites list
-        if(!store.favorites.some(name => name == props.name)){
+        if(!store.favorites.some(favorite => favorite.name == props.name)){
 			dispatch({
                 type:"set-favorite",
                 payload:{
@@ -15,8 +15,13 @@ export const Card = (props) => {
                 }
             })  
         }
+        //Deletes current card from the favorites list
         else{
-           console.log("Item Already Favorited")
+           const updatedFavorites = store.favorites.filter(favorite => favorite.name !== props.name);
+            dispatch({
+                type: "set-favorites",
+                payload: updatedFavorites
+            });
         }
     }
     //Resets the details saved to avoid showing previous information when moving to a new details page
